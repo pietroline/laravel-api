@@ -22,6 +22,7 @@ class CategoriesTableSeeder extends Seeder
             
             // Considerato l'eventualità nel caso in cui una categoria è composta da più parole
             $newCategory->slug = Str::slug($category); 
+            $newCategory->type = "categories";
 
             $newCategory->save();
 

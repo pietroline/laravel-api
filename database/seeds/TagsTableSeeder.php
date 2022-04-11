@@ -21,6 +21,7 @@ class TagsTableSeeder extends Seeder
             $newTag = new Tag();
             $newTag->name = $tag;
             $newTag->slug = Str::slug($tag);
+            $newTag->type = "tags";
             $newTag->save();
 
         }

@@ -19,6 +19,8 @@ class PostsTableSeeder extends Seeder
             $newPost->slug = $newPost->title;
             $newPost->content = $faker->text(rand(20, 500));
             $newPost->category_id = rand(1,5);
+            $newPost->type = "posts";
+            
             $newPost->save();
         }
     }

@@ -25,16 +25,12 @@
                               
                                 <td class="d-flex">
                                     <a href="{{route('admin.categories.show', $category->id)}}" class="btn btn-primary">Vedi</a>
-                                
                                     <a href="{{route('admin.categories.edit', $category->id)}}" class="btn btn-warning mx-2">Modifica</a>
 
-                                    <form method="POST" action="{{route('admin.categories.destroy', $category->id)}}">
-
-                                        @csrf
-                                        @method("DELETE")
-
-                                        <button class="btn btn-danger mJS_conferma">Elimina</button>
-                                    </form>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger mJS_deleteButton"  value="{{$category}}" data-toggle="modal" data-target="#staticBackdrop">
+                                        Elimina
+                                    </button>
                                    
                                     
                                 </td>
@@ -45,4 +41,30 @@
             </div>
         </div>
     </div>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Conferma eliminazione</h5>
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="mJS_modelTitle"></div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <form method="POST" id="mJS_form">
+
+                        @csrf
+                        @method("DELETE")
+
+                        <button class="btn btn-danger">Elimina</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 @endsection

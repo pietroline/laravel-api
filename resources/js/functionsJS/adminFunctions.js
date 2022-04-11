@@ -1,20 +1,30 @@
 
 // inizio gestione della conferma di eliminazione
-// reaources/views/admin/posts/index.blade.php
-// reaources/views/admin/categories/index.blade.php
-// reaources/views/admin/tag/index.blade.php
+// resources/views/admin/posts/index.blade.php
+// resources/views/admin/categories/index.blade.php
+// resources/views/admin/tags/index.blade.php
 
-    const buttons_delete = document.getElementsByClassName("mJS_conferma");
+    const buttons = document.getElementsByClassName("mJS_deleteButton");
+    const title = document.getElementById("mJS_modelTitle");
+    const form = document.getElementById("mJS_form");
 
-    for(let i = 0; i < buttons_delete.length; i++){
-        buttons_delete[i].addEventListener("click", function(event){
 
-            if(!confirm("Confermi di voler eliminare?")){
-                event.preventDefault();
+    for(let i=0; i<buttons.length; i++){
+        const button = buttons[i];
+        const array = JSON.parse(button.value);
+
+        button.addEventListener("click", function(e){
+
+            if(array.type == "posts"){
+                title.innerHTML = `Confermi di eliminare <strong>${array.title}</strong>?`
+            }else if(array.type == "categories" || array.type == "tags"){
+                title.innerHTML = `Confermi di eliminare <strong>${array.name}</strong>?`
             }
-
-        })
+        
+            form.action = `http://127.0.0.1:8000/admin/${array.type}/${array.id}`
+        });
     }
+
 
 // fine gestione della conferma di eliminazione
 
@@ -41,3 +51,7 @@
 // fine gestione color badge diversi
 
 
+
+
+// ----------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------

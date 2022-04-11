@@ -94,17 +94,29 @@
 /***/ (function(module, exports) {
 
 // inizio gestione della conferma di eliminazione
-// reaources/views/admin/posts/index.blade.php
-// reaources/views/admin/categories/index.blade.php
-// reaources/views/admin/tag/index.blade.php
-var buttons_delete = document.getElementsByClassName("mJS_conferma");
+// resources/views/admin/posts/index.blade.php
+// resources/views/admin/categories/index.blade.php
+// resources/views/admin/tags/index.blade.php
+var buttons = document.getElementsByClassName("mJS_deleteButton");
+var title = document.getElementById("mJS_modelTitle");
+var form = document.getElementById("mJS_form");
 
-for (var i = 0; i < buttons_delete.length; i++) {
-  buttons_delete[i].addEventListener("click", function (event) {
-    if (!confirm("Confermi di voler eliminare?")) {
-      event.preventDefault();
+var _loop = function _loop(i) {
+  var button = buttons[i];
+  var array = JSON.parse(button.value);
+  button.addEventListener("click", function (e) {
+    if (array.type == "posts") {
+      title.innerHTML = "Confermi di eliminare <strong>".concat(array.title, "</strong>?");
+    } else if (array.type == "categories" || array.type == "tags") {
+      title.innerHTML = "Confermi di eliminare <strong>".concat(array.name, "</strong>?");
     }
+
+    form.action = "http://127.0.0.1:8000/admin/".concat(array.type, "/").concat(array.id);
   });
+};
+
+for (var i = 0; i < buttons.length; i++) {
+  _loop(i);
 } // fine gestione della conferma di eliminazione
 // ----------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------
@@ -125,6 +137,8 @@ for (var _i = 0; _i < document.getElementsByClassName("mJS_badge_color").length;
 
   badge_color.style.backgroundColor = numeroEsadecimale;
 } // fine gestione color badge diversi
+// ----------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------
 
 /***/ }),
 
