@@ -3,7 +3,7 @@
 {{-- ----------------------------------- --}}
 
 @section("scriptJS")
-    <script src="{{ asset('js/authFunctions.js') }}" defer></script>
+    <script src="{{ asset('js/authPasswordFunctions.js') }}" defer></script>
 @endsection
 
 {{-- ----------------------------------- --}}

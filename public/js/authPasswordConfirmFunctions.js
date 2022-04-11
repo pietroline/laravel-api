@@ -81,30 +81,57 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/functionsJS/authFunctions.js":
-/*!***************************************************!*\
-  !*** ./resources/js/functionsJS/authFunctions.js ***!
-  \***************************************************/
+/***/ "./resources/js/functionsJS/authPasswordConfirmFunctions.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/functionsJS/authPasswordConfirmFunctions.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/pietroline/Scrivania/Personale/boolean/GitHub/progetti_LARAVEL/laravel-api/resources/js/functionsJS/authFunctions.js'");
+// inizio gestione mostra/nascondi password 
+// resources/views/auth/register.blade.php
+// inizio password-confirm
+var hiddenPasswordConfirm = document.querySelector(".mJS_password_confirm_hidden");
+var showedPasswordConfirm = document.querySelector(".mJS_password_confirm_showed");
+var inputTypePasswordConfirm = document.getElementById("password-confirm"); //visualizzo l'icona per mostrare/nascondere la password solo se la input contiene qualcosa
+
+inputTypePasswordConfirm.addEventListener("input", function (e) {
+  if (inputTypePasswordConfirm.value.length > 0) {
+    hiddenPasswordConfirm.classList.replace("d-none", "d-block");
+  } else {
+    hiddenPasswordConfirm.classList.replace("d-block", "d-none");
+  }
+}); //funzioni di listen per le icone di nascondi/mostra password
+
+hiddenPasswordConfirm.addEventListener("click", function (event) {
+  hiddenPasswordConfirm.classList.replace("d-block", "d-none");
+  showedPasswordConfirm.classList.replace("d-none", "d-block");
+  inputTypePasswordConfirm.type = "text";
+});
+showedPasswordConfirm.addEventListener("click", function (event) {
+  hiddenPasswordConfirm.classList.replace("d-none", "d-block");
+  showedPasswordConfirm.classList.replace("d-block", "d-none");
+  inputTypePasswordConfirm.type = "password";
+}); // fine password-confirm
+// fine gestione mostra/nascondi password-confirm
+// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 
 /***/ }),
 
-/***/ 3:
-/*!*********************************************************!*\
-  !*** multi ./resources/js/functionsJS/authFunctions.js ***!
-  \*********************************************************/
+/***/ 4:
+/*!************************************************************************!*\
+  !*** multi ./resources/js/functionsJS/authPasswordConfirmFunctions.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progetti_LARAVEL/laravel-api/resources/js/functionsJS/authFunctions.js */"./resources/js/functionsJS/authFunctions.js");
+module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progetti_LARAVEL/laravel-api/resources/js/functionsJS/authPasswordConfirmFunctions.js */"./resources/js/functionsJS/authPasswordConfirmFunctions.js");
 
 
 /***/ })
