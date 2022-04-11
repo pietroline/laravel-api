@@ -2486,11 +2486,11 @@ var render = function () {
             [
               _c("div", { staticClass: "card" }, [
                 _c("div", { staticClass: "card-body" }, [
-                  _c("h5", { staticClass: "card-title" }, [
+                  _c("h5", { staticClass: "card-title font-weight-bold" }, [
                     _vm._v(_vm._s(post.title)),
                   ]),
                   _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
+                  _c("p", { staticClass: "card-text font-italic" }, [
                     _vm._v(
                       _vm._s(
                         post.content.length > 200
@@ -2503,7 +2503,7 @@ var render = function () {
                   _c(
                     "a",
                     { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                    [_vm._v("Vai all'articolo")]
+                    [_vm._v("Vai al post")]
                   ),
                 ]),
               ]),
