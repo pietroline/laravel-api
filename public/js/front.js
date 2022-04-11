@@ -1934,23 +1934,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Main",
   mounted: function mounted() {
-    this.getPost();
+    this.getPosts();
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      currentPage: 1,
+      lastPage: null
     };
   },
   methods: {
-    getPost: function getPost() {
+    getPosts: function getPosts(RequestpPage) {
       var _this = this;
 
-      axios.get('/api/posts').then(function (response) {
+      axios.get('/api/posts', {
+        "params": {
+          "page": RequestpPage
+        }
+      }).then(function (response) {
         // handle success
-        _this.posts = response.data.results;
+        _this.currentPage = response.data.results.current_page;
+        _this.posts = response.data.results.data;
+        _this.lastPage = response.data.results.last_page;
       })["catch"](function (error) {
         // handle error
         console.log(error);
@@ -2474,7 +2508,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("main", [
     _c("div", { staticClass: "container" }, [
-      _c("h1", { staticClass: "my-3" }, [_vm._v("Elenco dei post")]),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
@@ -2512,10 +2546,90 @@ var render = function () {
         }),
         0
       ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-center my-5" }, [
+        _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
+          _c(
+            "ul",
+            { staticClass: "pagination justify-content-center" },
+            [
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: _vm.currentPage == 1 ? "disabled" : "",
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function ($event) {
+                          return _vm.getPosts(_vm.currentPage - 1)
+                        },
+                      },
+                    },
+                    [_vm._v("Precedente")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.lastPage, function (page) {
+                return _c(
+                  "li",
+                  {
+                    key: page,
+                    staticClass: "page-item",
+                    class: page == _vm.currentPage ? "active" : "",
+                  },
+                  [
+                    _c("span", { staticClass: "page-link" }, [
+                      _vm._v(_vm._s(page)),
+                    ]),
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: _vm.currentPage == _vm.lastPage ? "disabled" : "",
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function ($event) {
+                          return _vm.getPosts(_vm.currentPage + 1)
+                        },
+                      },
+                    },
+                    [_vm._v("Successivo")]
+                  ),
+                ]
+              ),
+            ],
+            2
+          ),
+        ]),
+      ]),
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("h1", { staticClass: "my-3" }, [_vm._v("Elenco dei post")]),
+    ])
+  },
+]
 render._withStripped = true
 
 

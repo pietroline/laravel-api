@@ -16,7 +16,9 @@ class PostController extends Controller
     public function index()
     {
         // $posts = Post::all();
+        //laravel risolve la relazione con category
         $posts = Post::with("category")->get();
+        $posts = Post::paginate(10);
 
         return response()->json(
             [
