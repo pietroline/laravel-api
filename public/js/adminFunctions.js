@@ -135,7 +135,7 @@ for (var _i = 0; _i < document.getElementsByClassName("mJS_badge_color").length;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progetti_LARAVEL/laravel-many-to-many/resources/js/functionsJS/adminFunctions.js */"./resources/js/functionsJS/adminFunctions.js");
+module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progetti_LARAVEL/laravel-api/resources/js/functionsJS/adminFunctions.js */"./resources/js/functionsJS/adminFunctions.js");
 
 
 /***/ })

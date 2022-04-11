@@ -1,15 +1,20 @@
 <template>
     <div>
-        <h1>Work in Progress</h1>
-        <h2>Sito in Costruzione</h2>
+
+        <Main/>
+    
     </div>
-  
 </template>
 
 <script>
+
+    import Main from "../components/Main";
+
     export default {
         name: "App",
-        component: { }
+        components: {
+            Main
+         }
     }
 </script>
 
