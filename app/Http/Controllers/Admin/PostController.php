@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidationPost;
 use App\Tag;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -90,7 +91,13 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view("admin.posts.show", compact("post"));
+
+        // creo variabile contenente quanti giorni fa è stato creato il post
+        $now = Carbon::now();
+        $dataCreatedAt = $post->created_at;
+        $diffInDays = $now->diffInDays($dataCreatedAt);
+
+        return view("admin.posts.show", compact("post", "diffInDays"));
     }
 
     /**

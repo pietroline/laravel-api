@@ -18,6 +18,9 @@
             <li>
                 <strong>Categoria: </strong> {{isset($post->category) ? $post->category->name : "NULL"}}
             </li>
+            <li>
+                <strong>Il post è stato creato </strong> {{$diffInDays}} giorni fa
+            </li>
 
             <li>
                 @foreach ($post->tags as $tag)
