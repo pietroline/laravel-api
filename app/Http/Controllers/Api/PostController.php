@@ -17,8 +17,8 @@ class PostController extends Controller
     {
         // $posts = Post::all();
         //laravel risolve la relazione con category
-        $posts = Post::with("category")->get();
-        $posts = Post::paginate(12);
+        // $posts = Post::with("category")->get();
+        $posts = Post::with(["category", "tags"])->paginate(12);
 
         return response()->json(
             [
