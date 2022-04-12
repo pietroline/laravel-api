@@ -55,7 +55,7 @@
         name: "Main",
 
         mounted: function(){
-            this.getPosts();
+            this.getPosts(1);
         },
 
         data() {
